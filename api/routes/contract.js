@@ -16,7 +16,7 @@ router.post('/', (req, res, next) => {
         message: 'Hey there ! I am POST Route'
     })
 });
-/*
+
 // Dynamic route / variable route
 
 router.get('/:id', (req, res, next) => {
@@ -25,7 +25,7 @@ router.get('/:id', (req, res, next) => {
         id
     })
     })
-*/
+
 // Single route
 
 router.get('/:id', (req, res, next) => {
