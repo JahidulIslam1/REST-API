@@ -1,10 +1,17 @@
 const express = require('express');
+const morgan = require('morgan');
 const res = require('express/lib/response');
 const contactRoute = require('./api/routes/contact');
 
 const app = express();
+app.use(morgan('dev'));
 
 const PORT = process.env.PORT || 3000;
+
+app.use((req, res, next) => {
+    console.log('I am a Middleware Function');
+    next();
+})
 
 app.use('/api/contacts', contactRoute);
 
