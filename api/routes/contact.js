@@ -1,19 +1,28 @@
-const express = require('express');
-const router = express.Router();
+const express = require('express')
+const router = express.Router()
+
+// Virtual database
+
+const contacts = []
 
 // GET
 
 router.get('/', (req, res, next) => {
     res.status(200).json({
-        message: 'Hey there ! I am GET Route'
+        contacts
     })
 });
 
 // POST
 
 router.post('/', (req, res, next) => {
+
+    contacts.push({
+        name: req.body.name,
+        email: req.body.email
+    })
     res.status(201).json({
-        message: 'Hey there ! I am POST Route'
+        message: 'Data Saved'
     })
 });
 
@@ -50,4 +59,4 @@ router.delete('/:id', (req, res, next) => {
     })
 });
 
-module.exports = router;
+module.exports = router

@@ -1,26 +1,28 @@
-const express = require('express');
-const morgan = require('morgan');
-const res = require('express/lib/response');
-const contactRoute = require('./api/routes/contact');
+const express = require('express')
+const morgan = require('morgan')
+const bodyparser = require('body-parser')
 
-const app = express();
-app.use(morgan('dev'));
+const res = require('express/lib/response')
+const contactRoute = require('./api/routes/contact')
 
-const PORT = process.env.PORT || 3000;
+const app = express()
+app.use(morgan('dev'))
 
-app.use((req, res, next) => {
-    console.log('I am a Middleware Function');
-    next();
-})
+app.use(bodyparser.urlencoded({extended: true}))
+app.use(bodyparser.json())
+
+
+const PORT = process.env.PORT || 3000
+
 
 app.use('/api/contacts', contactRoute);
 
 app.get('/', (req, res) => {
-    res.send('<div><h1>Hello World</h1><p>Hey There ! How can i help you.<p></div>');
+    res.send('<div><h1>Hello World</h1><p>Hey There ! How can i help you.<p></div>')
 })
 
 app.get('/api/contacts', (req, res) => {
-    res.json(contacts);
+    res.json(contacts)
 });
 
 app.post('/api/contacts', (req, res) => {
@@ -30,7 +32,7 @@ app.post('/api/contacts', (req, res) => {
 })
 
 app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
+    console.log(`Server is running on port ${PORT}`)
 })
 
 const contacts = [
