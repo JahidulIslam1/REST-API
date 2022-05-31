@@ -1,0 +1,70 @@
+1. Identify Objec Model
+	/* USER
+	-name
+	-id
+	-email
+	-password
+	-birth-date
+	-phone
+	*/
+	/* Facebook Post
+	-title
+	-body
+	-comments
+	-likes
+	-createdTime
+	-updatedTime
+	*/
+
+2. Create Model URI/URL
+	/* User
+	https://example.com/api/users GET
+	https://example.com/api/users POST
+
+	https://example.com/api/users/:id GET
+	https://example.com/api/users/:id PUT/PATCH
+	https://example.com/api/users/:id DELETE
+	*/
+	/* Posts
+	https://example.com/api/posts GET
+	https://example.com/api/posts POST
+
+	https://example.com/api/posts/:id GET
+	https://example.com/api/posts/:id PUT/PATCH
+	https://example.com/api/posts/:id DELETE
+	*/
+
+3. Determine Representation
+	/*User
+	[
+	 {
+	name: 'jahid'
+	id: '1'
+	email: 'jahid.fj@gmail.com'
+	pass: '123'
+	phone: '01235'
+	birt-date: 25/04/1997'
+	 },
+	 {
+	name: 'jahid'
+	id: '1'
+	email: 'jahid.fj@gmail.com'
+	pass: '123'
+	phone: '01235'
+	birt-date: 25/04/1997'
+	}
+	]
+	/*
+
+3.1. Single Data Representation
+	/*User
+	{
+	name: 'jahid'
+	id: '1'
+	email: 'jahid.fj@gmail.com'
+	pass: '123'
+	phone: '01235'
+	birt-date: 25/04/1997'
+	}
+	*/
+4. JSON View

@@ -1,22 +1,22 @@
 const express = require('express');
 const res = require('express/lib/response');
-const contractRoute = require('./api/routes/contract');
+const contactRoute = require('./api/routes/contact');
 
 const app = express();
 
 const PORT = process.env.PORT || 3000;
 
-app.use('/api/contracts', contractRoute);
+app.use('/api/contacts', contactRoute);
 
 app.get('/', (req, res) => {
     res.send('<div><h1>Hello World</h1><p>Hey There ! How can i help you.<p></div>');
 })
 
-app.get('/api/contracts', (req, res) => {
-    res.json(contracts);
+app.get('/api/contacts', (req, res) => {
+    res.json(contacts);
 });
 
-app.post('/api/contracts', (req, res) => {
+app.post('/api/contacts', (req, res) => {
     res.json({
         message: 'I am Post Method'
     })
@@ -26,7 +26,7 @@ app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 })
 
-const contracts = [
+const contacts = [
     {   
         name: 'Md. Jahidul Islam',
         email: 'example.com@gmail.com',
