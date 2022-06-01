@@ -3,7 +3,23 @@ const morgan = require('morgan')
 const bodyparser = require('body-parser')
 
 const res = require('express/lib/response')
+
+
+const mongoose = require('mongoose')
+mongoose.connect('mongodb://localhost/contacts-db')
+
+const db = mongoose.connection
+
+db.on('error', (err) => {
+    console.log(err)
+})
+
+db.once('open', () => {
+    console.log('Database Connection Etablished')
+})
+
 const contactRoute = require('./api/routes/contact')
+
 
 const app = express()
 app.use(morgan('dev'))

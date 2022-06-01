@@ -1,15 +1,23 @@
 const express = require('express')
 const router = express.Router()
-
-// Virtual database
-
-const contacts = []
+const Contact = require('../models/Contact')
 
 // GET
 
 router.get('/', (req, res, next) => {
-    res.status(200).json({
-        contacts
+    Contact.find()
+    .then(contacts =>{
+        res.status(200).json({
+            message: 'All Contracts',
+            contacts
+        })
+    })
+    .catch(err => {
+        console.log(err)
+        res.status(500).json({
+            message: 'Error Occured',
+            error: err
+        })
     })
 });
 
@@ -17,13 +25,25 @@ router.get('/', (req, res, next) => {
 
 router.post('/', (req, res, next) => {
 
-    contacts.push({
+    const contact = new Contact({
         name: req.body.name,
+        phone: req.body.phone,
         email: req.body.email
     })
-    res.status(201).json({
-        message: 'Data Saved'
-    })
+    contact.save()
+        .then(data => {
+            return res.status(201).json({
+                message: 'New Contact Added',
+                contact: data
+            })
+        })
+        .catch(err => {
+            console.log(err)
+            res.status(500).json({
+                message: 'Error Occured',
+                error: err
+            })
+        })
 });
 
 // Dynamic route / variable route
