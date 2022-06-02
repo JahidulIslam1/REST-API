@@ -1,51 +1,15 @@
 const express = require('express')
 const router = express.Router()
-const Contact = require('../models/Contact')
+const contactControllers = require('../controllers/contactController')
 
 // GET
 
-router.get('/', (req, res, next) => {
-    Contact.find()
-    .then(contacts =>{
-        res.status(200).json({
-            message: 'All Contracts',
-            contacts
-        })
-    })
-    .catch(err => {
-        console.log(err)
-        res.status(500).json({
-            message: 'Error Occured',
-            error: err
-        })
-    })
-});
+router.get('/', contactControllers.getAllContactController)
 
 // POST
 
-router.post('/', (req, res, next) => {
-
-    const contact = new Contact({
-        name: req.body.name,
-        phone: req.body.phone,
-        email: req.body.email
-    })
-    contact.save()
-        .then(data => {
-            return res.status(201).json({
-                message: 'New Contact Added',
-                contact: data
-            })
-        })
-        .catch(err => {
-            console.log(err)
-            res.status(500).json({
-                message: 'Error Occured',
-                error: err
-            })
-        })
-});
-
+router.post('/', contactControllers.postNewContactController)
+/*
 // Dynamic route / variable route
 
 router.get('/:id', (req, res, next) => {
@@ -53,30 +17,18 @@ router.get('/:id', (req, res, next) => {
     res.json({
         id
     })
-    })
+    }) */
 
 // Single route
 
-router.get('/:id', (req, res, next) => {
-    res.json({
-        message: 'I am Single Contact'
-    })
-    })
+router.get('/:id', contactControllers.getSingleContact)
 
 // PUT
 
-router.put('/:id', (req, res, next) => {
-    res.status(202).json({
-        message: 'Hey there ! I am PUT Route'
-    })
-});
+router.put('/:id', contactControllers.editContact)
 
 // DELETE
 
-router.delete('/:id', (req, res, next) => {
-    res.status(203).json({
-        message: 'Hey there ! I am DELETE Route'
-    })
-});
+router.delete('/:id', contactControllers.deleteContact)
 
 module.exports = router
