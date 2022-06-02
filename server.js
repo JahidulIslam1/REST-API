@@ -32,7 +32,7 @@ const PORT = process.env.PORT || 3000
 
 
 app.use('/api/contacts', contactRoute);
-
+/*
 app.get('/', (req, res) => {
     res.send('<div><h1>Hello World</h1><p>Hey There ! How can i help you.<p></div>')
 })
@@ -46,11 +46,11 @@ app.post('/api/contacts', (req, res) => {
         message: 'I am Post Method'
     })
 })
-
+*/
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`)
 })
-
+/*
 const contacts = [
     {   
         name: 'Md. Jahidul Islam',
@@ -73,4 +73,4 @@ const contacts = [
         Address: '208-Fokirapool, Motijheel, Dhaka-1000',
         Birth_Date: '20th May 1990'
     },
-]
+]*/
