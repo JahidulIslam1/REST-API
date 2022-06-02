@@ -19,6 +19,7 @@ db.once('open', () => {
 })
 
 const contactRoute = require('./api/routes/contact')
+const userRoute = require('./api/routes/user')
 
 
 const app = express()
@@ -32,6 +33,9 @@ const PORT = process.env.PORT || 3000
 
 
 app.use('/api/contacts', contactRoute);
+
+app.use('/api/users', userRoute);
+
 /*
 app.get('/', (req, res) => {
     res.send('<div><h1>Hello World</h1><p>Hey There ! How can i help you.<p></div>')
