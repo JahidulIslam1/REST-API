@@ -1,6 +1,7 @@
 const express = require('express')
 const morgan = require('morgan')
 const bodyparser = require('body-parser')
+const cors = require('cors')
 
 const res = require('express/lib/response')
 
@@ -24,6 +25,7 @@ const userRoute = require('./api/routes/user')
 
 const app = express()
 app.use(morgan('dev'))
+app.use(cors())
 
 app.use(bodyparser.urlencoded({extended: true}))
 app.use(bodyparser.json())
